@@ -11,6 +11,8 @@ import shutil
 import subprocess
 import sys
 import zipfile
+import lib.extensions
+from lib.extensions import copy_extension_locales
 
 from lib.util import get_configuration, get_output_dir
 
@@ -53,7 +55,7 @@ BINARIES = {
     'snapshot_blob.bin',
     os.path.join('gen', 'content', 'app', 'resources', 'content_resources_200_percent.pak'),
     os.path.join('gen', 'ui', 'resources', 'ui_resources_200_percent.pak'),
-  ],
+  ] + lib.extensions.BINARIES['all'],
   'darwin': [
     'chromedriver',
     'mksnapshot',
@@ -69,7 +71,7 @@ BINARIES = {
     'libyuv.a',
     'libsystem_wrappers.a',
     'libcdm_renderer.a',
-  ],
+  ] + lib.extensions.BINARIES['darwin'],
   'linux': [
     'chromedriver',
     'mksnapshot',
@@ -87,7 +89,7 @@ BINARIES = {
     'libsystem_wrappers.a',
     'libcdm_renderer.a',
     os.path.join('lib', 'libffmpeg.so'),
-  ],
+  ] + lib.extensions.BINARIES['linux'],
   'win32': [
     'chromedriver.exe',
     'd3dcompiler_47.dll',
@@ -163,7 +165,7 @@ BINARIES = {
     os.path.join('obj', 'third_party', 'webrtc', 'system_wrappers', 'system_wrappers.lib'),
     os.path.join('obj', 'third_party', 'webrtc', 'webrtc_common.cc.pdb'),
     os.path.join('obj', 'third_party', 'webrtc', 'webrtc_common.lib'),
-  ],
+  ] + lib.extensions.BINARIES['win32'],
 }
 
 ARCH_BLACKLIST = {
@@ -201,6 +203,7 @@ INCLUDE_DIRS = [
   'components/os_crypt',
   'components/component_updater',
   'components/update_client',
+  'components/url_matcher',
   'content/browser',
   'content/common',
   'content/public',
@@ -240,23 +243,24 @@ INCLUDE_DIRS = [
     'third_party/speech-dispatcher',
   ],
   'win32': [],
-}[TARGET_PLATFORM]
+}[TARGET_PLATFORM] + lib.extensions.INCLUDE_DIRS
+
 GENERATED_INCLUDE_DIRS = [
   'content',
   'mojo',
   'net',
   'ui',
-]
+] + lib.extensions.GENERATED_INCLUDE_DIRS
 OTHER_HEADERS = [
   'content/common/content_export.h',
   'ui/events/keycodes/dom/dom_key_data.inc',
   'ui/events/keycodes/dom/keycode_converter_data.inc',
-]
+] + lib.extensions.OTHER_HEADERS
 OTHER_SOURCES = [
 ]
 OTHER_DIRS = [
   os.path.join('ui', 'resources', 'cursors'),
-]
+] + lib.extensions.OTHER_DIRS
 
 
 def main():
@@ -277,7 +281,7 @@ def main():
       copy_binaries(target_arch, component, output_dir)
       copy_generated_sources(target_arch, component, output_dir)
       copy_locales(target_arch, component, output_dir)
-
+      copy_extension_locales(target_arch, component, output_dir)
   copy_ffmpeg(target_arch)
   copy_sources()
   generate_licenses()
