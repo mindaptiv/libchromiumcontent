@@ -1,0 +1,23 @@
+diff --git a/base/win/win_util.cc b/base/win/win_util.cc
+index 57bee8a..04fc928 100644
+--- a/base/win/win_util.cc
++++ b/base/win/win_util.cc
+@@ -102,8 +102,17 @@ const wchar_t kWindows8OSKRegPath[] =
+ 
+ // Returns the current platform role. We use the PowerDeterminePlatformRoleEx
+ // API for that.
++typedef decltype(PowerDeterminePlatformRoleEx)* PowerDeterminePlatformRoleExType;
+ POWER_PLATFORM_ROLE GetPlatformRole() {
+-  return PowerDeterminePlatformRoleEx(POWER_PLATFORM_ROLE_V2);
++  PowerDeterminePlatformRoleExType power_determine_platform_role_ex =
++      reinterpret_cast<PowerDeterminePlatformRoleExType>(GetProcAddress(
++          GetModuleHandle(L"Powrprof.dll"), "PowerDeterminePlatformRoleEx"));
++
++  if (!power_determine_platform_role_ex) {
++    return GetPlatformRole();
++  }
++
++  return power_determine_platform_role_ex(POWER_PLATFORM_ROLE_V2);
+ }
+ 
+ }  // namespace
