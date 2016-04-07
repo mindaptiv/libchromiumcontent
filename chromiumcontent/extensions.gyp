@@ -28,7 +28,6 @@
         '<(DEPTH)/components/components.gyp:web_cache_browser',
         '<(DEPTH)/components/components.gyp:web_cache_common',
         '<(DEPTH)/components/components.gyp:web_modal',
-        '<(DEPTH)/components/components.gyp:wifi_component',
         '<(DEPTH)/extensions/browser/api/api_registration.gyp:extensions_api_registration',
         '<(DEPTH)/extensions/common/api/api.gyp:extensions_api',
         '<(DEPTH)/extensions/extensions.gyp:extensions_browser',
@@ -40,6 +39,13 @@
         '<(DEPTH)/extensions/extensions_strings.gyp:extensions_strings',
         '<(DEPTH)/third_party/cld_2/cld_2.gyp:cld2_platform_impl',
       ],
+      'conditions': [
+        ['OS=="win" or OS=="mac"', {
+          'dependencies': [
+            '<(DEPTH)/components/components.gyp:wifi_component',
+          ],
+        }]
+      ]
     }
   ]
 }
