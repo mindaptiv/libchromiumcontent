@@ -17,6 +17,7 @@
         '<(DEPTH)/components/components.gyp:keyed_service_content',
         '<(DEPTH)/components/components.gyp:keyed_service_core',
         '<(DEPTH)/components/components.gyp:policy',
+        '<(DEPTH)/components/components.gyp:policy_component_browser',
         '<(DEPTH)/components/components.gyp:policy_component_common',
         '<(DEPTH)/components/components.gyp:pref_registry',
         '<(DEPTH)/components/components.gyp:syncable_prefs',
