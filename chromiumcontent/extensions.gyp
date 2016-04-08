@@ -4,8 +4,8 @@
       'target_name': 'extensions',
       'type': 'none',
       'dependencies': [
-        '<(DEPTH)/chrome/chrome.gyp:common',
-        '<(DEPTH)/chrome/chrome.gyp:common_net',
+        '<(DEPTH)/chrome/common/extensions/api/api.gyp:chrome_api',
+        '<(DEPTH)/chrome/chrome_resources.gyp:chrome_resources',
         '<(DEPTH)/chrome/chrome_resources.gyp:chrome_resources',
         '<(DEPTH)/components/components.gyp:browsing_data',
         '<(DEPTH)/components/components.gyp:content_settings_core_common',
@@ -24,7 +24,6 @@
         '<(DEPTH)/components/components.gyp:ui_zoom',
         '<(DEPTH)/components/components.gyp:url_matcher',
         '<(DEPTH)/components/components.gyp:user_prefs',
-        '<(DEPTH)/components/components.gyp:version_info',
         '<(DEPTH)/components/components.gyp:web_cache_browser',
         '<(DEPTH)/components/components.gyp:web_cache_common',
         '<(DEPTH)/components/components.gyp:web_modal',
