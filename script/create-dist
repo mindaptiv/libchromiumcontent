@@ -215,6 +215,7 @@ INCLUDE_DIRS = [
   'components/devtools_discovery',
   'components/devtools_http_handler',
   'components/os_crypt',
+  'components/prefs',
   'components/security_state',
   'components/update_client',
   'components/url_matcher',
