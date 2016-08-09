@@ -157,6 +157,7 @@ INCLUDE_DIRS = [
   'components/keyed_service',
   'components/web_modal',
   'components/webdata',
+  'components/webdata_services',
   'components/crx_file',
   'components/ui'
 ]
@@ -169,6 +170,7 @@ GENERATED_INCLUDE_DIRS = [
 ]
 OTHER_HEADERS = [
   'chrome/common/chrome_isolated_world_ids.h',
+  'chrome/browser/sync/glue/sync_start_util.h',
 ]
 OTHER_DIRS = [
   'build',
