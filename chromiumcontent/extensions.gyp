@@ -27,6 +27,7 @@
         '<(DEPTH)/components/components.gyp:json_schema',
         '<(DEPTH)/components/components.gyp:keyed_service_content',
         '<(DEPTH)/components/components.gyp:keyed_service_core',
+        '<(DEPTH)/components/components.gyp:os_crypt',
         '<(DEPTH)/components/components.gyp:policy',
         '<(DEPTH)/components/components.gyp:policy_component_browser',
         '<(DEPTH)/components/components.gyp:policy_component_common',
