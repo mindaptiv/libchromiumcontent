@@ -73,6 +73,8 @@ BINARIES = {
     'libsystem_wrappers.a',
     'libcdm_renderer.a',
     'libsecurity_state.a',
+    'libzip.a',
+    'libminizip.a',
   ] + lib.brave.BINARIES['darwin'],
   'linux': [
     'chromedriver',
@@ -91,6 +93,8 @@ BINARIES = {
     'libsystem_wrappers.a',
     'libcdm_renderer.a',
     'libsecurity_state.a',
+    'libzip.a',
+    'libminizip.a',
     os.path.join('lib', 'libffmpeg.so'),
   ] + lib.brave.BINARIES['linux'],
   'win32': [
@@ -178,6 +182,8 @@ BINARIES = {
     os.path.join('obj', 'third_party', 'webrtc', 'system_wrappers', 'system_wrappers.lib'),
     os.path.join('obj', 'third_party', 'webrtc', 'webrtc_common.cc.pdb'),
     os.path.join('obj', 'third_party', 'webrtc', 'webrtc_common.lib'),
+    os.path.join('obj', 'third_party', 'zlib', 'google', 'zip', 'zip.lib'),
+    os.path.join('obj', 'third_party', 'zlib', 'google', 'zip', 'minizip.lib'),
   ] + lib.brave.BINARIES['win32'],
 }
 
@@ -226,6 +232,7 @@ INCLUDE_DIRS = [
   'content/common',
   'content/public',
   'content/renderer',
+  'content/utility',
   'crypto',
   'device/bluetooth',
   'ipc',
@@ -253,6 +260,7 @@ INCLUDE_DIRS = [
   'third_party/skia',
   'third_party/widevine',
   'third_party/wtl/include',
+  'third_party/zlib/google',
   'ui',
   'url',
   'v8/include',

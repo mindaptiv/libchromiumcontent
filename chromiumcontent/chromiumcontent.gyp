@@ -43,6 +43,7 @@
         '<(DEPTH)/ppapi/ppapi_internal.gyp:ppapi_proxy',
         '<(DEPTH)/ppapi/ppapi_internal.gyp:ppapi_ipc',
         '<(DEPTH)/ppapi/ppapi_internal.gyp:ppapi_shared',
+        '<(DEPTH)/third_party/zlib/google/zip.gyp:zip',
         '<(DEPTH)/third_party/webrtc/modules/modules.gyp:desktop_capture',
         '<(DEPTH)/third_party/widevine/cdm/widevine_cdm.gyp:widevinecdmadapter',
         '<(DEPTH)/third_party/widevine/cdm/widevine_cdm.gyp:widevine_cdm_version_h',
